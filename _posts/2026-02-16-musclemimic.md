@@ -158,18 +158,19 @@ Walking with corresponding synthetic muscle activation patterns:
 
 ### Imitation Learning Results
 
-We evaluate the generalist policy on the KINESIS motion dataset using early termination as the primary quality signal: an episode terminates if the mean site deviation across 17 mimic sites relative to the root (pelvis) exceeds 0.3 m, or if the pelvis deviates from the reference by more than 1 m in world coordinates. We use *relative* rather than absolute position error because muscle activation dynamics introduce temporal delays that prevent the musculoskeletal model from perfectly tracking reference velocities.
+We evaluate the generalist policy on the KINESIS motion dataset using early termination as the primary quality signal: an episode terminates if the mean site deviation across 17 mimic sites relative to the root (pelvis) exceeds 0.3 m, or if the pelvis deviates from the reference by more than 0.5 m in world coordinates. We use *relative* rather than absolute position error because muscle activation dynamics introduce temporal delays that prevent the musculoskeletal model from perfectly tracking reference velocities.
 
 | Metric | GMR-Fit (Train) | GMR-Fit (Test) |
 |--------|----------------|----------------|
-| Early termination rate | 0.134 | 0.166 |
-| Joint position error | 0.143 | 0.143 |
-| Joint velocity error | 0.568 | 0.565 |
-| Root yaw error | 0.104 | 0.106 |
-| Relative site position error | 0.039 | 0.040 |
-| Absolute site position error | 0.252 | 0.255 |
-| Mean episode length | 534.6 | 524.9 |
-| Mean episode return | 610.3 | 599.3 |
+| Early termination rate | 0.134 | 0.129 |
+| Joint position error | 0.143 | 0.130 |
+| Joint velocity error | 0.568 | 0.545 |
+| Root position error | 0.104 | 0.138 |
+| Root yaw error | 0.104 | 0.047 |
+| Relative site position error | 0.039 | 0.027 |
+| Absolute site position error | 0.252 | 0.146 |
+| Mean episode length | 534.6 | 528.1|
+| Mean episode return | 610.3 | 569.1 |
 
 <small>Validation metrics on KINESIS training (972 motions) and testing (108 motions) dataset.</small>
 
@@ -196,13 +197,13 @@ To verify the biomechanical fidelity of our models during dynamic motion, we con
 
 ### Walking
 
-We evaluate on five AMASS walking sequences, comparing against two experimental datasets (treadmill and level walking at 1.2 m/s, nine participants each). Simulated kinematics achieve a **mean correlation of 0.92 and 0.94** for treadmill and level walking respectively, with **0.71 for joint dynamics**. The lower-limb joints exhibit stereotyped gait patterns consistent with experimental literature: hip flexion at contact progressing to extension before toe-off, knee flexion during early stance for impact absorption, and rapid ankle plantarflexion for propulsion at toe-off.
+We evaluate on five AMASS walking sequences, comparing against two experimental datasets (treadmill and level walking at 1.2 m/s, nine participants each of two datasets<d-cite key="Huawei2022dataset,koo2025dataset"></d-cite>). Simulated kinematics achieve a **mean correlation of 0.92 and 0.94** for treadmill and level walking respectively, with **0.71 for joint dynamics**. The lower-limb joints exhibit stereotyped gait patterns consistent with experimental literature: hip flexion at contact progressing to extension before toe-off, knee flexion during early stance for impact absorption, and rapid ankle plantarflexion for propulsion at toe-off.
 
 {% include figure.html path="assets/img/musclemimic/gait_walk.png" alt="Walking gait analysis" class="l-page" caption="Representative joint kinematics of the left lower limb (hip, knee, ankle, and foot) over a full walking gait cycle, comparing human experimental data and MyoFullBody-generated motion. Human walking data were collected on a treadmill at 1.2 m/s (orange) and level walking with a mean velocity of 1.2 m/s (purple). Simulated results are evaluated on five AMASS walking sequences, aligned by ground reaction force onset and truncated to one gait cycle." %}
 
 ### Running
 
-After fine-tuning the 10-billion-step checkpoint with an additional 50 million steps on 10 running motions, we compare against treadmill-running data at 1.75 m/s. Hip, knee, and ankle flexion over one gait cycle achieve a **mean correlation of 0.79**, with kinematic patterns consistent with the higher-energy demands of running, notably stronger plantarflexion at push-off and more pronounced knee flexion during swing.
+After fine-tuning the 10-billion-step checkpoint with an additional 50 million steps on 10 running motions, we compare against treadmill-running data at 1.75 m/s from Wang et al.<d-cite key="Huawei2022dataset"></d-cite>. Hip, knee, and ankle flexion over one gait cycle achieve a **mean correlation of 0.79**, with kinematic patterns consistent with the higher-energy demands of running, notably stronger plantarflexion at push-off and more pronounced knee flexion during swing.
 
 {% include figure.html path="assets/img/musclemimic/gait_run.png" alt="Running gait analysis" class="l-page" caption="Representative joint kinematics of the left lower limb (hip, knee, ankle, and foot) over a full running gait cycle, comparing human experimental data and MyoFullBody-generated motion. Human running data were collected on a treadmill at 1.8 m/s. Simulated results aligned by ground reaction force onset and truncated to one gait cycle." %}
 
@@ -220,9 +221,9 @@ We compare synthetic muscle activations against EMG recordings from two human wa
 
 ## How It Works
 
-### Muscle Model
+### Musculoskeletal Model
 
-Both embodiments use Hill-type<d-cite key="hill1938heat"></d-cite> muscle actuators following MuJoCo<d-cite key="todorov2012mujoco"></d-cite> with inelastic tendons, where control signals pass through a first-order nonlinear activation dynamics model<d-cite key="Millard2013"></d-cite> that differentiates between activation and deactivation phases. We introduce tunable parameters, including muscle activation time constants and maximum active force per muscle, that can be independently adjusted for upper and lower limbs to accommodate highly dynamic motions. Smaller time constants lead to faster but stiffer activation, while larger values yield smoother control better suited for impulsive motions like jumping, though at the expense of biological realism<d-cite key="Thelen2003,Millard2013"></d-cite>. The contact geometries are composed of capsules and ellipsoids<d-cite key="mujoco2023docs"></d-cite>, with both models fine-tuned for symmetry in joint constraints, muscle moment arms, and force-length curves.
+Both embodiments use Hill-type<d-cite key="hill1938heat"></d-cite> muscle actuators following MuJoCo<d-cite key="todorov2012mujoco"></d-cite> with inelastic tendons, where control signals pass through a first-order nonlinear activation dynamics model<d-cite key="Millard2013"></d-cite> that differentiates between activation and deactivation phases. We introduce tunable parameters, including muscle activation time constants and maximum active force per muscle, that can be independently adjusted for upper and lower limbs to accommodate highly dynamic motions. We observed that smaller activation time constants produce faster muscle responses but result in stiffer activations and noticeable jitter in the motion output. In contrast, larger time constants lead to smoother and more stable control, better suited for impulsive behaviors such as jumping, though they deviate further from biologically realistic activation dynamics <d-cite key="Thelen2003,Millard2013"></d-cite>. The contact geometries consist of capsules and ellipsoids <d-cite key="mujoco2023docs"></d-cite> across all body segments, with self-collision explicitly enabled. Both models are carefully fine-tuned to ensure bilateral symmetry in joint constraints, muscle moment arms, and force–length relationships.
 
 ### Motion Retargeting
 
@@ -285,9 +286,9 @@ Moment arms were further validated against experimental measurements from cadave
 
 ## Limitations
 
-While our framework demonstrates promising alignment with experimental data, musculoskeletal models remain approximations of biological reality. The Hill-type model simplifies complex phenomena such as history-dependent force production, heterogeneous fiber recruitment, and tendon elasticity. Joint constraints and contact geometries are idealized, and SMPL-based retargeting assumes generic body morphology. Simulation outputs should be interpreted as model predictions; conclusions drawn from simulated muscle activations or joint loads warrant experimental validation before clinical application.
+While our framework demonstrates promising alignment with experimental data, musculoskeletal models remain approximations of biological reality. For example, the Hill-type model in MuJoCo simplifies complex phenomena such as history-dependent force production, heterogeneous fiber recruitment, and tendon elasticity. These assumptions can influence dynamic outcomes and may limit the faithful reproduction of highly explosive or high-impact motions (e.g., martial arts or rapid vertical jumping). Moreover, the current SMPL-based retargeting pipeline assumes generic morphology and matched gender, leaving open questions about how subject-specific anthropometrics affect retargeting accuracy and policy learning. Simulation results at the current stage should therefore be interpreted as model-based predictions and validated against experimental data before clinical applications.
 
-By open-sourcing this framework, we invite the community to iterate on these models: refining muscle parameters, improving joint definitions, and validating against diverse experimental datasets.
+By open-sourcing this framework, we invite the community to iterate on these models: refining muscle parameters, improving joint definitions, and validating against diverse experimental datasets. We also encourage researchers to explore future applications in rehabilitation and human–robot interaction, including training on pathological gait patterns and integration with assistive devices such as exoskeletons.
 
 ## Citation
 
