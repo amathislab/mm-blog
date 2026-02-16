@@ -1,0 +1,83 @@
+/*******************************************************************************
+ * Base typography and element styles
+ ******************************************************************************/
+@use "variables" as v;
+
+body {
+  font-family: v.$font-family-base;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--global-text-color);
+  background-color: var(--global-bg-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--global-text-color);
+  scroll-margin-top: 66px;
+}
+
+a {
+  color: var(--global-theme-color);
+  text-decoration: none;
+  &:hover {
+    color: var(--global-hover-color);
+    text-decoration: underline;
+  }
+}
+
+hr {
+  border-top-color: var(--global-divider-color);
+}
+
+blockquote {
+  border-left: 3px solid var(--global-theme-color);
+  padding-left: 1em;
+  margin-left: 0;
+  color: var(--global-text-color-light);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+
+  th, td {
+    padding: 0.5em 0.75em;
+    border-bottom: 1px solid var(--global-divider-color);
+    text-align: left;
+  }
+
+  th {
+    font-weight: 600;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+code {
+  font-family: v.$font-family-mono;
+  font-size: 0.875em;
+  background-color: var(--global-code-bg-color);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+pre {
+  background-color: var(--global-code-bg-color);
+  padding: 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+
+  code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.85em;
+  }
+}

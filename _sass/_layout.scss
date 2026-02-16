@@ -1,0 +1,205 @@
+/*******************************************************************************
+ * Page layout, navbar, footer
+ ******************************************************************************/
+@use "variables" as v;
+
+.container {
+  max-width: v.$max-content-width;
+}
+
+// Navbar
+.navbar {
+  background-color: var(--global-bg-color);
+  border-bottom: 1px solid var(--global-divider-color);
+  padding: 0.5rem 0;
+
+  .navbar-brand {
+    color: var(--global-text-color);
+    font-weight: 600;
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+
+  .nav-link {
+    color: var(--global-text-color);
+    &:hover {
+      color: var(--global-theme-color);
+    }
+  }
+
+  .nav-item.active .nav-link {
+    color: var(--global-theme-color);
+    font-weight: 500;
+  }
+}
+
+// Hamburger icon bars
+.icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--global-text-color);
+  border-radius: 1px;
+  transition: all 0.2s;
+}
+.top-bar { margin-bottom: 5px; }
+.middle-bar { margin-bottom: 5px; }
+
+// Nav controls — font size + theme toggle
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+// Font size controls
+.font-size-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--global-text-color-light);
+  transition: color 0.2s;
+  &:hover { color: var(--global-theme-color); }
+}
+
+.font-size-label {
+  font-size: 0.8rem;
+  color: var(--global-text-color-light);
+  min-width: 1.5em;
+  text-align: center;
+  user-select: none;
+}
+
+.theme-toggle {
+  --theme-item: 30px;
+  --theme-gap: 2px;
+  --theme-pad: 3px;
+}
+
+.theme-toggle__track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, var(--theme-item));
+  gap: var(--theme-gap);
+  padding: var(--theme-pad);
+  border-radius: 100px;
+  background: #f1f5f9;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="dark"] .theme-toggle__track {
+  background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
+  border: 1px solid transparent;
+  border-top-color: #252525;
+  border-bottom-color: #4a4a4a;
+  border-left-color: #303030;
+  border-right-color: #404040;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.6),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.05),
+    0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+.theme-toggle__indicator {
+  position: absolute;
+  top: var(--theme-pad);
+  left: var(--theme-pad);
+  width: var(--theme-item);
+  height: var(--theme-item);
+  border-radius: 50%;
+  transform: translateX(calc(var(--theme-index, 0) * (var(--theme-item) + var(--theme-gap))));
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+  z-index: 0;
+}
+
+html[data-theme="dark"] .theme-toggle__indicator {
+  background: linear-gradient(180deg, #454545 0%, #2a2a2a 100%);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle__btn {
+  height: var(--theme-item);
+  width: var(--theme-item);
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease;
+  padding: 0;
+
+  &:hover { color: #64748b; }
+  &.active { color: #334155; }
+}
+
+html[data-theme="dark"] .theme-toggle__btn {
+  color: #606060;
+  &:hover { color: #909090; }
+  &.active { color: #efefef; }
+}
+
+// Footer
+footer {
+  background-color: var(--global-footer-bg-color);
+  color: var(--global-footer-text-color);
+  padding: 1.5rem 0;
+  font-size: 0.875rem;
+
+  a {
+    color: var(--global-footer-link-color);
+    &:hover {
+      color: var(--global-theme-color);
+    }
+  }
+}
+
+// Post list (index page)
+.post-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 2em;
+  }
+
+  .post-date {
+    display: block;
+    font-size: 0.85em;
+    color: var(--global-text-color-light);
+    margin-bottom: 0.25em;
+  }
+
+  a {
+    font-size: 1.25em;
+    font-weight: 600;
+  }
+
+  p {
+    margin-top: 0.25em;
+    color: var(--global-text-color-light);
+  }
+}

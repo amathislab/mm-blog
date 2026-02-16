@@ -1,0 +1,18 @@
+{% if site.enable_math %}
+<script>
+  MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      ignoreHtmlClass: 'nostem|nolatexmath',
+      processHtmlClass: 'tex2jax_process|d-article'
+    }
+  };
+</script>
+<script defer src="{{ site.third_party_libraries.mathjax.url }}" id="MathJax-script"></script>
+{% endif %}

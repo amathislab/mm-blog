@@ -1,0 +1,67 @@
+<header>
+  <nav class="navbar navbar-light navbar-expand-sm sticky-top" role="navigation">
+    <div class="container">
+      <a class="navbar-brand title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+
+      <button class="navbar-toggler collapsed ml-auto" type="button"
+        data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          {% assign sorted_pages = site.pages | sort: 'nav_order' %}
+          {% for p in sorted_pages %}
+            {% if p.nav %}
+              <li class="nav-item {% if page.url == p.url %}active{% endif %}">
+                <a class="nav-link" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+
+          <li class="nav-controls">
+            <div class="font-size-controls">
+              <button class="tool-btn" id="font-decrease" aria-label="Decrease font size">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                </svg>
+              </button>
+              <span class="font-size-label" id="font-size-label">A</span>
+              <button class="tool-btn" id="font-increase" aria-label="Increase font size">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </button>
+            </div>
+
+          {% if site.enable_dark_mode %}
+            <div class="theme-toggle">
+              <div class="theme-toggle__track" role="group" aria-label="Theme toggle">
+                <span class="theme-toggle__indicator"></span>
+                <button data-theme="system" class="theme-toggle__btn active" aria-pressed="true" title="System">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="12" x="3" y="4" rx="2"/><line x1="8" x2="16" y1="20" y2="20"/><line x1="12" x2="12" y1="16" y2="20"/>
+                  </svg>
+                </button>
+                <button data-theme="light" class="theme-toggle__btn" aria-pressed="false" title="Light mode">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                  </svg>
+                </button>
+                <button data-theme="dark" class="theme-toggle__btn" aria-pressed="false" title="Dark mode">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          {% endif %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

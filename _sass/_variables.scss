@@ -1,0 +1,24 @@
+/*******************************************************************************
+ * Variables — edit these to customize the theme.
+ ******************************************************************************/
+
+// Colors
+$purple-color: #b509ac !default;
+$cyan-color: #2698ba !default;
+$grey-color: #828282 !default;
+$grey-color-light: #c8c8c8 !default;
+$grey-color-dark: #1c1c1d !default;
+$grey-900: #212529;
+$white-color: #ffffff !default;
+$black-color: #000000 !default;
+
+// Code
+$code-bg-color-light: rgba($purple-color, 0.05);
+$code-bg-color-dark: #2c3237 !default;
+
+// Layout
+$max-content-width: 930px !default;
+
+// Font stacks
+$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+$font-family-mono: 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;

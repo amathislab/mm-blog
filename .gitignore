@@ -1,0 +1,20 @@
+# Jekyll build output
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Dependencies
+vendor/
+Gemfile.lock
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+references/
+
+# Source archives
+*.zip

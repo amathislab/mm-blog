@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    {% include header.html %}
+
+    <div class="container mt-5" role="main">
+      {{ content }}
+    </div>
+
+    {% include footer.html %}
+
+    <!-- jQuery & Bootstrap JS -->
+    <script src="{{ site.third_party_libraries.jquery.url }}"></script>
+    <script src="{{ site.third_party_libraries.bootstrap.js }}"></script>
+
+    {% include scripts/analytics.html %}
+  </body>
+</html>

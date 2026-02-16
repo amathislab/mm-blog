@@ -1,0 +1,59 @@
+/*******************************************************************************
+ * Syntax highlighting (Rouge)
+ ******************************************************************************/
+
+// Rouge GitHub-style light theme
+.highlight {
+  .c, .cd, .cm, .c1, .cs  { color: #6a737d; font-style: italic; } // Comments
+  .k, .kc, .kd, .kn, .kp,
+  .kr, .kt                 { color: #d73a49; }                     // Keywords
+  .s, .sb, .sc, .sd, .s2,
+  .se, .sh, .si, .sx, .s1  { color: #032f62; }                     // Strings
+  .na                       { color: #6f42c1; }                     // Attribute names
+  .nb, .nc, .no, .nd, .ni,
+  .ne, .nf, .nl, .nn, .nt  { color: #6f42c1; }                     // Names
+  .mi, .mf, .mh, .il       { color: #005cc5; }                     // Numbers
+  .o, .ow                   { color: #d73a49; }                     // Operators
+  .p                        { color: var(--global-text-color); }    // Punctuation
+  .gd                       { color: #b31d28; background: #ffeef0; }
+  .gi                       { color: #22863a; background: #f0fff4; }
+}
+
+// Dark mode overrides
+html[data-theme="dark"] .highlight {
+  .c, .cd, .cm, .c1, .cs  { color: #8b949e; }
+  .k, .kc, .kd, .kn, .kp,
+  .kr, .kt                 { color: #ff7b72; }
+  .s, .sb, .sc, .sd, .s2,
+  .se, .sh, .si, .sx, .s1  { color: #a5d6ff; }
+  .na                       { color: #d2a8ff; }
+  .nb, .nc, .no, .nd, .ni,
+  .ne, .nf, .nl, .nn, .nt  { color: #d2a8ff; }
+  .mi, .mf, .mh, .il       { color: #79c0ff; }
+  .o, .ow                   { color: #ff7b72; }
+  .gd                       { color: #ffa198; background: #490202; }
+  .gi                       { color: #56d364; background: #04260f; }
+}
+
+// Code copy button
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 0.75em;
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+  color: var(--global-text-color);
+}
+
+div.highlighter-rouge {
+  position: relative;
+  &:hover .code-copy-btn {
+    opacity: 1;
+  }
+}

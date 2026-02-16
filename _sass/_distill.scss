@@ -1,0 +1,216 @@
+/*******************************************************************************
+ * Distill d-* element style overrides
+ * Adapted from al-folio's _distill.scss to respect theme CSS variables.
+ ******************************************************************************/
+
+d-title {
+  padding: 2rem 0 1.5rem;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: var(--global-text-color-light);
+  }
+}
+
+d-byline {
+  border-top-color: var(--global-divider-color) !important;
+
+  h3 {
+    color: var(--global-text-color) !important;
+  }
+
+  a,
+  d-article d-byline a {
+    color: var(--global-text-color) !important;
+    &:hover {
+      color: var(--global-hover-color) !important;
+    }
+  }
+}
+
+d-article {
+  border-top-color: var(--global-divider-color) !important;
+
+  // Professional figure captions
+  figure {
+    figcaption {
+      color: var(--global-text-color-light) !important;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+
+      strong {
+        color: var(--global-text-color) !important;
+        font-weight: 600;
+      }
+    }
+  }
+
+  p, h1, h2, h3, h4, h5, h6, li, table {
+    color: var(--global-text-color) !important;
+  }
+
+  h1, h2, hr, table, table th, table td {
+    border-bottom-color: var(--global-divider-color) !important;
+  }
+
+  a {
+    color: var(--global-theme-color) !important;
+    &:hover {
+      color: var(--global-hover-color) !important;
+    }
+  }
+
+  b i { display: inline; }
+
+  blockquote {
+    border-left: 2px solid var(--global-theme-color) !important;
+  }
+
+  // Collapsible details blocks
+  details {
+    color: var(--global-text-color);
+    background-color: var(--global-code-bg-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    grid-column: text;
+    overflow: auto;
+    max-width: 100%;
+
+    summary { color: var(--global-theme-color); }
+    p { margin: 0.5rem 0; }
+  }
+
+  // Footnotes
+  d-footnote {
+    scroll-margin-top: 66px;
+    color: var(--global-theme-color) !important;
+    &:hover { color: var(--global-hover-color) !important; }
+  }
+
+  // Citations
+  d-cite a, a.citation {
+    color: var(--global-theme-color) !important;
+    &:hover { color: var(--global-hover-color) !important; }
+  }
+}
+
+d-appendix {
+  border-top-color: var(--global-divider-color) !important;
+  color: var(--global-distill-app-color) !important;
+
+  h3, li, span {
+    color: var(--global-distill-app-color) !important;
+  }
+
+  a, a.footnote-backlink {
+    color: var(--global-distill-app-color) !important;
+    &:hover { color: var(--global-hover-color) !important; }
+  }
+}
+
+/*******************************************************************************
+ * Floating TOC Sidebar (Notion-style: mini bars → expand on hover)
+ ******************************************************************************/
+
+.toc-sidebar {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc((100vw - 740px) / 2 - 260px);
+  z-index: 50;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  // Hidden until scrolled past byline
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+// --- Mini indicators (collapsed) ---
+.toc-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+.toc-mini-bar {
+  width: 16px;
+  height: 3px;
+  border-radius: 1px;
+  background-color: var(--global-text-color);
+  transition: opacity 0.2s ease;
+}
+
+.toc-mini-dim {
+  opacity: 0.15;
+}
+
+// --- Full list (expanded on hover) ---
+.toc-list {
+  display: none;
+  flex-direction: column;
+  width: max-content;
+  max-width: 240px;
+  padding: 8px 0;
+  background-color: var(--global-bg-color);
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 1px rgba(15, 15, 15, 0.05),
+    0 3px 6px rgba(15, 15, 15, 0.1),
+    0 9px 24px rgba(15, 15, 15, 0.15);
+}
+
+.toc-list-item {
+  padding: 4px 14px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--global-text-color);
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--global-code-bg-color);
+  }
+}
+
+.toc-list-indent {
+  padding-left: 28px;
+  font-size: 0.75rem;
+}
+
+.toc-list-active {
+  font-weight: 600;
+  color: var(--global-theme-color);
+}
+
+// Hover: hide mini, show list
+.toc-sidebar:hover {
+  .toc-mini { display: none; }
+  .toc-list { display: flex; }
+}
+
+@media (max-width: 1400px) {
+  .toc-sidebar { display: none; }
+}

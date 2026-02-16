@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    {% include head.html %}
+
+    <!-- Distill JS -->
+    {% include scripts/distill.html %}
+
+    <!-- MathJax -->
+    {% include scripts/mathjax.html %}
+
+    {% if page._styles %}
+    <style type="text/css">{{ page._styles }}</style>
+    {% endif %}
+  </head>
+
+  <d-front-matter>
+    <script async type="text/json">
+      {
+        "title": "{{ page.title }}",
+        "description": "{{ page.description }}",
+        "published": "{{ page.date | date: '%B %d, %Y' }}",
+        "authors": [
+          {% for author in page.authors %}
+          {
+            "author": "{{ author.name }}",
+            "authorURL": "{{ author.url }}",
+            "affiliations": [
+              {
+                "name": "{{ author.affiliations.name }}",
+                "url": "{{ author.affiliations.url }}"
+              }
+            ]
+          }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ],
+        "katex": {
+          "delimiters": [
+            { "left": "$", "right": "$", "display": false },
+            { "left": "$$", "right": "$$", "display": true }
+          ]
+        }
+      }
+    </script>
+  </d-front-matter>
+
+  <body>
+    {% include header.html %}
+
+    <!-- Notion-style TOC Sidebar (auto-generated from headings) -->
+    {% if page.toc != false %}
+    <aside class="toc-sidebar" id="toc-sidebar"></aside>
+    {% endif %}
+
+    <div class="post distill">
+      <d-title>
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.description }}</p>
+      </d-title>
+
+      {% if page.authors %}
+      <d-byline></d-byline>
+      {% endif %}
+
+      <d-article>
+        {{ content }}
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+      {% if page.bibliography %}
+      <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>
+      {% endif %}
+    </div>
+
+    {% include footer.html %}
+
+    <!-- jQuery & Bootstrap JS -->
+    {% include scripts/jquery.html %}
+    <script src="{{ site.third_party_libraries.bootstrap.js }}"></script>
+
+    <!-- Distill overrides (theme-aware footnote/citation styling) -->
+    <script src="{{ '/assets/js/distillpub/overrides.js' | relative_url }}"></script>
+
+    <!-- Common utilities (font size, copy-to-clipboard) -->
+    <script src="{{ '/assets/js/common.js' | relative_url }}"></script>
+
+    <!-- TOC scroll spy -->
+    {% if page.toc != false %}
+    <script src="{{ '/assets/js/toc.js' | relative_url }}"></script>
+    {% endif %}
+
+    {% include scripts/analytics.html %}
+  </body>
+</html>

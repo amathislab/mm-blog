@@ -1,0 +1,18 @@
+{% include metadata.html %}
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{{ site.third_party_libraries.bootstrap.css }}">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
+
+<!-- Site CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+{% if site.enable_dark_mode %}
+<!-- Dark mode (in head to prevent flash) -->
+<script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+<script>initTheme();</script>
+{% endif %}
