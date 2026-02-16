@@ -69,6 +69,15 @@
       <d-appendix>
         <d-footnote-list></d-footnote-list>
         <d-citation-list></d-citation-list>
+        {% if page.acknowledgements %}
+        <h3 id="acknowledgements">Acknowledgements</h3>
+        <p>{{ page.acknowledgements }}</p>
+        {% endif %}
+        {% if page.citation_bibtex %}
+        <h3 id="citation">Citation</h3>
+        <p>Please cite this work as</p>
+        <pre class="citation long">{{ page.citation_bibtex }}</pre>
+        {% endif %}
       </d-appendix>
 
       {% if page.bibliography %}

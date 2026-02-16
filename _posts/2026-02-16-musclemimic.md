@@ -29,6 +29,16 @@ authors:
 
 bibliography: 2026-02-16-musclemimic.bib
 
+acknowledgements: >-
+  We thank members of the Mathis Group for feedback on the project, and Vittorio Caggiano, James Heald, and Balint K. Hodossy for helpful discussions.
+
+citation_bibtex: |
+  @article{musclemimic2026,
+    title   = {Towards Embodied AI with MuscleMimic: Unlocking full-body musculoskeletal motor learning at scale},
+    author  = {Chengkun Li and Cheryl Wang and Bianca Ziliotto and Merkourios Simos and Guillaume Durandau and Alexander Mathis},
+    year    = {2026},
+  }
+
 _styles: >
   .video-grid {
     display: grid;
@@ -113,7 +123,9 @@ Human motor control emerges from hundreds of muscles coordinating in real time, 
 
 <div class="highlight-box" markdown="1">
 
-**Code, models, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
+**Code, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
+
+**Musculoskeletal models**: ``pip install musclemimic_models``
 
 </div>
 
@@ -239,7 +251,9 @@ We provide two retargeting pipelines that map SMPL-format motion capture data on
 
 GMR-Fit achieves dramatically better joint-limit satisfaction (0.27% vs 12.26% violation) and lower tendon jump rates (3.20% vs 30.14%), while Mocap-Body retains a ~3x speed advantage.
 
-### Training
+### Policy
+
+The policy is an MLP with residual connections that outputs $\pi(a_t \mid s_t)$, a distribution over muscle excitation. The observation $s_t$ includes proprioceptive signals, tendon states, motion targets, and crucially, both the previous policy output $a_{t-1}$, making it autoregressive in nature.
 
 {% include figure.html path="assets/img/musclemimic/Policy.jpg" alt="Policy observation structure" caption="Policy observation structure. The state is decomposed into proprioceptive signals (root height and velocity, joint positions and velocities), tendon states, touch info, mimic site relative positions, and motion phase. A history of 3 stacked states is concatenated with the current goal and future goals at regular lookahead intervals. Each goal is defined by root position and velocity deltas and target mimic site relative positions." %}
 
@@ -289,22 +303,10 @@ While our framework demonstrates promising alignment with experimental data, mus
 
 By open-sourcing this framework, we invite the community to iterate on these models: refining muscle parameters, improving joint definitions, and validating against diverse experimental datasets.
 
-## Citation
-
-If you find MuscleMimic useful in your research, please cite:
-
-```bibtex
-@article{li2026musclemimic,
-  title={Towards Embodied AI with MuscleMimic: Unlocking full-body
-         musculoskeletal motor learning at scale},
-  author={Li, Chengkun and Wang, Cheryl and Ziliotto, Bianca and
-          Simos, Merkourios and Durandau, Guillaume and Mathis, Alexander},
-  year={2026}
-}
-```
-
 <div class="highlight-box" markdown="1">
 
-**Code, models, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
+**Code, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
+
+**Musculoskeletal models**: ``pip install musclemimic_models``
 
 </div>
