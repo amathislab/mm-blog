@@ -27,6 +27,7 @@ authors:
     affiliations:
       name: EPFL
 
+permalink: /
 bibliography: 2026-02-16-musclemimic.bib
 
 acknowledgements: >-
