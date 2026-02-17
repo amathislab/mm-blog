@@ -162,15 +162,15 @@ We evaluate the generalist policy on the KINESIS motion dataset using early term
 
 | Metric | GMR-Fit (Train) | GMR-Fit (Test) |
 |--------|----------------|----------------|
-| Early termination rate | 0.134 | 0.129 |
-| Joint position error | 0.143 | 0.130 |
-| Joint velocity error | 0.568 | 0.545 |
-| Root position error | 0.104 | 0.138 |
-| Root yaw error | 0.104 | 0.047 |
-| Relative site position error | 0.039 | 0.027 |
-| Absolute site position error | 0.252 | 0.146 |
-| Mean episode length | 534.6 | 528.1|
-| Mean episode return | 610.3 | 569.1 |
+| Early termination rate | 0.108 | 0.129 |
+| Joint position error | 0.129 | 0.130 |
+| Joint velocity error | 0.542 | 0.545 |
+| Root position error | 0.079 | 0.138 |
+| Root yaw error | 0.048 | 0.047 |
+| Relative site position error | 0.027 | 0.027 |
+| Absolute site position error | 0.144 | 0.146 |
+| Mean episode length | 534.1 | 528.1|
+| Mean episode return | 575.9 | 569.1 |
 
 <small>Validation metrics on KINESIS training (972 motions) and testing (108 motions) dataset.</small>
 
