@@ -11,6 +11,7 @@ authors:
     affiliations:
       name: EPFL
   - name: Cheryl Wang*
+    url: "https://cherylwang20.github.io/"
     affiliations:
       name: McGill University
   - name: Bianca Ziliotto
@@ -20,10 +21,11 @@ authors:
     affiliations:
       name: EPFL
   - name: Guillaume Durandau
+    url: "https://www.mcgill.ca/mecheng/guillaume-durandau"
     affiliations:
       name: McGill University
   - name: Alexander Mathis
-    url: "https://www.mackenziemathislab.org/"
+    url: "https://amathislab.github.io"
     affiliations:
       name: EPFL
 
