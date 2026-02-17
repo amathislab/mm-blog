@@ -113,6 +113,21 @@ d-appendix {
     color: var(--global-distill-app-color) !important;
     &:hover { color: var(--global-hover-color) !important; }
   }
+
+  // "Cite this article" block (matches Distill's distill-appendix styling)
+  .citation {
+    font-size: 11px;
+    line-height: 15px;
+    border: 1px solid var(--global-divider-color);
+    background: var(--global-code-bg-color);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: var(--global-distill-app-color);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
 }
 
 /*******************************************************************************
