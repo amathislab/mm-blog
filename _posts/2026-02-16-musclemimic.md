@@ -137,49 +137,49 @@ Human motor control emerges from hundreds of muscles coordinating in real time, 
 <div class="video-grid l-page">
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/walking_running.mp4" type="video/mp4">
+      <source src="{{ '/assets/videos/walking_running.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Walking & Running</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/backwards_walking.mp4" type="video/mp4">
+      <source src="{{ '/assets/videos/backwards_walking.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Backwards Walking</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/walking_turning.mp4" type="video/mp4">
+      <source src="{{ '/assets/videos/walking_turning.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Walking & Turning</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/dancing.mp4" type="video/mp4">
+      <source src="{{ '/assets/videos/dancing.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Dancing</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/lifting_box.mp4" type="video/mp4">
+      <source src="{{ '/assets/videos/lifting_box.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Lifting Box</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/waving.mp4" type="video/mp4">
+      <source src="{{ '/assets/videos/waving.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Waving</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/drinking_water.mp4" type="video/mp4">
+      <source src="{{ '/assets/videos/drinking_water.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Drinking Water</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/jumpingjack.mp4" type="video/mp4">
+      <source src="{{ '/assets/videos/jumpingjack.mp4' | relative_url }}" type="video/mp4">
     </video>
     <figcaption><strong>Jumping Jack</strong></figcaption>
   </figure>
@@ -242,8 +242,8 @@ We compare synthetic muscle activations against EMG recordings from two human wa
 
 <figure class="l-page">
   <div class="subfig-row">
-    <img src="/assets/img/musclemimic/emg/Boo_with_examples.png" alt="EMG comparison — Boo et al." style="width: 62%;">
-    <img src="/assets/img/musclemimic/emg/summary_metrics_Wang.png" alt="EMG summary — Wang et al." style="width: 38%;">
+    <img src="{{ '/assets/img/musclemimic/emg/Boo_with_examples.png' | relative_url }}" alt="EMG comparison — Boo et al." style="width: 62%;">
+    <img src="{{ '/assets/img/musclemimic/emg/summary_metrics_Wang.png' | relative_url }}" alt="EMG summary — Wang et al." style="width: 38%;">
   </div>
   <figcaption><strong>(Left)</strong> Gait analysis with human data from Boo et al.<d-cite key="koo2025dataset"></d-cite> Individual muscle activation patterns and summary metrics. <strong>(Right)</strong> Summary metrics with human data from Wang et al.<d-cite key="Huawei2022dataset"></d-cite></figcaption>
 </figure>
@@ -305,8 +305,8 @@ Both models were extensively validated for muscle symmetry and biomechanical acc
 
 <figure class="l-page">
   <div class="image-grid-2">
-    <img src="/assets/img/refinement1.svg" alt="Muscle symmetry — BFLH across Knee Flexion">
-    <img src="/assets/img/refinement2.svg" alt="Muscle symmetry — BIClong across Elbow Flexion">
+    <img src="{{ '/assets/img/refinement1.svg' | relative_url }}" alt="Muscle symmetry — BFLH across Knee Flexion">
+    <img src="{{ '/assets/img/refinement2.svg' | relative_url }}" alt="Muscle symmetry — BIClong across Elbow Flexion">
   </div>
   <figcaption>Validation of symmetry between left and right muscle-tendon groups of MyoFullBody.</figcaption>
 </figure>
@@ -315,12 +315,12 @@ Moment arms were further validated against experimental measurements from cadave
 
 <figure class="l-page">
   <div class="image-grid-2">
-    <img src="/assets/img/musclemimic/muscle_check/moment_arm_BRD.png" alt="BRD moment arm validation">
-    <img src="/assets/img/musclemimic/muscle_check/moment_arm_Biceps femoris.png" alt="Biceps femoris moment arm validation">
+    <img src="{{ '/assets/img/musclemimic/muscle_check/moment_arm_BRD.png' | relative_url }}" alt="BRD moment arm validation">
+    <img src="{{ '/assets/img/musclemimic/muscle_check/moment_arm_Biceps femoris.png' | relative_url }}" alt="Biceps femoris moment arm validation">
   </div>
   <div class="image-grid-2">
-    <img src="/assets/img/musclemimic/muscle_check/superior_lat_dorsi_abduction_validation.png" alt="Lat dorsi moment arm validation">
-    <img src="/assets/img/musclemimic/muscle_check/moment_arm_Rectus femoris.png" alt="Rectus femoris moment arm validation">
+    <img src="{{ '/assets/img/musclemimic/muscle_check/superior_lat_dorsi_abduction_validation.png' | relative_url }}" alt="Lat dorsi moment arm validation">
+    <img src="{{ '/assets/img/musclemimic/muscle_check/moment_arm_Rectus femoris.png' | relative_url }}" alt="Rectus femoris moment arm validation">
   </div>
   <figcaption>Validation comparing MyoFullBody muscle moment arms against experimental data from prior studies for selected shoulder, elbow, and lower-limb muscles. Despite inter-individual variability, our model's profiles remain within the reported experimental ranges.</figcaption>
 </figure>

@@ -1,8 +1,8 @@
 # Site settings
 title: MuscleMimic
 description: Full-body musculoskeletal model for neuromuscular motor control research
-url: ""
-baseurl: ""
+url: "https://amathislab.github.io"
+baseurl: "/mm-blog"
 lang: en
 
 # Build
