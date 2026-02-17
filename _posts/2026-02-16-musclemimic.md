@@ -117,55 +117,72 @@ _styles: >
   }
 ---
 
-Human motor control emerges from hundreds of muscles coordinating in real time, yet most simulated humanoids bypass this complexity entirely, relying on torque-driven joints that ignore the underlying neuromotor dynamics<d-cite key="Park2004,Aftab2016,peng2018deepmimic,Won2020"></d-cite>. While musculoskeletal (MSK) models built from cadaver and MRI data have brought us closer to biological realism<d-cite key="Christophy2011,Dorn2015,Rajagoapal2016,Seth2018,Adriaenssens2022"></d-cite>, they've been held back by computational cost (training takes days to weeks on CPUs<d-cite key="he2024dynsyn,simos2025kinesis,wang2025-ieee"></d-cite>) and limited to static validation or single-task evaluations. **Complex full-body models capable of diverse, dynamic movement have remained largely unexplored and only partially validated.**
+Human motor control emerges from hundreds of muscles coordinating in real time, yet most simulated humanoids bypass this complexity entirely, relying on torque-driven joints that ignore the underlying neuromotor dynamics<d-cite key="Park2004,Aftab2016,peng2018deepmimic,Won2020"></d-cite>. While musculoskeletal (MSK) models built from cadaver and MRI data have brought us closer to biological realism<d-cite key="Christophy2011,Dorn2015,Rajagoapal2016,Seth2018,Adriaenssens2022"></d-cite>, they've been held back by computational cost (training takes days to weeks on CPUs<d-cite key="he2024dynsyn,simos2025kinesis,wang2025-ieee"></d-cite>) and limited to static validation or single-task evaluations. Complex full-body models capable of diverse, dynamic movement have remained largely unexplored and only partially validated.
 
 **MuscleMimic** is an open-source framework that changes this. By combining full-body muscle-actuated humanoids with massively parallel GPU simulation via MuJoCo Warp<d-cite key="mujoco-warp"></d-cite>, we achieve order-of-magnitude training speedups, enabling a single generalist policy to learn thousands of human motions under full muscular control<d-cite key="arnold"></d-cite>. The framework provides two validated musculoskeletal embodiments, a retargeting pipeline that maps SMPL-format motion capture onto our models, and pretrained checkpoints that can be fine-tuned for subject-specific biomechanical analysis. Such capabilities are essential for realizing neuromechanical computational models that bridge brain, body, and behavior<d-cite key="wang2026embodied"></d-cite>.
 
 <div class="highlight-box" markdown="1">
 
+**Preprint of this work will be released soon**
+
 **Code, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
 
-**Musculoskeletal models**: ``pip install musclemimic_models``
+**Try out musculoskeletal models**: ``pip install musclemimic_models``
 
 </div>
 
 ## What It Looks Like
 
-All motions below are produced by a single generalist policy controlling **416 Hill-type muscles**.
 
-<div class="video-grid">
+<div class="video-grid l-page">
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/running.mp4" type="video/mp4">
+      <source src="/assets/videos/walking_running.mp4" type="video/mp4">
     </video>
-    <figcaption><strong>Running</strong>: Full-body locomotion with coordinated muscle actuation.</figcaption>
+    <figcaption><strong>Walking & Running</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/airkick.mp4" type="video/mp4">
+      <source src="/assets/videos/backwards_walking.mp4" type="video/mp4">
     </video>
-    <figcaption><strong>Air Kick</strong>: Dynamic kicking motion with balance control.</figcaption>
+    <figcaption><strong>Backwards Walking</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/hold_leg_out.mp4" type="video/mp4">
+      <source src="/assets/videos/walking_turning.mp4" type="video/mp4">
     </video>
-    <figcaption><strong>Leg Hold</strong>: Static balance demonstrating sustained muscle coordination.</figcaption>
+    <figcaption><strong>Walking & Turning</strong></figcaption>
   </figure>
   <figure>
     <video autoplay loop muted playsinline>
-      <source src="/assets/videos/tennis_out.mp4" type="video/mp4">
+      <source src="/assets/videos/dancing.mp4" type="video/mp4">
     </video>
-    <figcaption><strong>Tennis Swing</strong>: Athletic motion with full-body coordination.</figcaption>
+    <figcaption><strong>Dancing</strong></figcaption>
   </figure>
-</div>
-
-Walking with corresponding synthetic muscle activation patterns:
-
-<div class="featured-video">
-  <video autoplay loop muted playsinline>
-    <source src="/assets/videos/walking.mp4" type="video/mp4">
-  </video>
+  <figure>
+    <video autoplay loop muted playsinline>
+      <source src="/assets/videos/lifting_box.mp4" type="video/mp4">
+    </video>
+    <figcaption><strong>Lifting Box</strong></figcaption>
+  </figure>
+  <figure>
+    <video autoplay loop muted playsinline>
+      <source src="/assets/videos/waving.mp4" type="video/mp4">
+    </video>
+    <figcaption><strong>Waving</strong></figcaption>
+  </figure>
+  <figure>
+    <video autoplay loop muted playsinline>
+      <source src="/assets/videos/drinking_water.mp4" type="video/mp4">
+    </video>
+    <figcaption><strong>Drinking Water</strong></figcaption>
+  </figure>
+  <figure>
+    <video autoplay loop muted playsinline>
+      <source src="/assets/videos/jumpingjack.mp4" type="video/mp4">
+    </video>
+    <figcaption><strong>Jumping Jack</strong></figcaption>
+  </figure>
 </div>
 
 ### Imitation Learning Results
@@ -239,6 +256,8 @@ Both embodiments use Hill-type<d-cite key="hill1938heat"></d-cite> muscle actuat
 
 ### Motion Retargeting
 
+{% include figure.html path="assets/img/musclemimic/general-pipeline.png" class="l-page" alt="Retargeting pipeline" caption="Motion retargeting pipeline. SMPL-format motion capture is first pre-processed via shape fitting and motion scaling, then passed through one of two inverse kinematics branches (MuJoCo Mocap Bodies or Mink-based GMR with equality constraints), and finally post-processed to fix floating and ground penetration artifacts." %}
+
 We provide two retargeting pipelines that map SMPL-format motion capture data onto the musculoskeletal models. **Mocap-Body** uses a kinematic body in MuJoCo with a three-stage pipeline: SMPL shape fitting, inverse kinematics, and post-processing to remove artifacts such as floating and ground penetration. **GMR-Fit**<d-cite key="joao2025gmr,ze2025gmr"></d-cite> builds on the GMR robotics retargeting framework with our SMPL-fitting stage, enforcing joint constraints and dependencies to produce physiologically realistic trajectories.
 
 | Metric | Mocap-Body | GMR-Fit |
@@ -254,13 +273,21 @@ GMR-Fit achieves dramatically better joint-limit satisfaction (0.27% vs 12.26% v
 
 ### Policy
 
-The policy is an MLP with residual connections that outputs $\pi(a_t \mid s_t)$, a distribution over muscle excitation. The observation $s_t$ includes proprioceptive signals, tendon states, motion targets, and crucially, both the previous policy output $a_{t-1}$, making it autoregressive in nature.
+The policy is an MLP with residual connections that outputs $\pi(a_t \mid s_t)$, a distribution over muscle excitation. The observation $s_t$ includes proprioceptive signals, tendon states, motion targets, and crucially, the previous policy output $a_{t-1}$, making it autoregressive in nature. Both actor and critic use SiLU activations<d-cite key="elfwing2018sigmoid"></d-cite>, LayerNorm<d-cite key="ba2016layer"></d-cite>, and orthogonal initialization<d-cite key="saxe2014exact"></d-cite>. The output is a diagonal Gaussian with learnable state-independent standard deviation.
 
 {% include figure.html path="assets/img/musclemimic/Policy.jpg" alt="Policy observation structure" caption="Policy observation structure. The state is decomposed into proprioceptive signals (root height and velocity, joint positions and velocities), tendon states, touch info, mimic site relative positions, and motion phase. A history of 3 stacked states is concatenated with the current goal and future goals at regular lookahead intervals. Each goal is defined by root position and velocity deltas and target mimic site relative positions." %}
 
+### Reward
+
+The reward at each timestep is $r_t = \max(0,\; r_t^{\text{imit}} + P_t)$, combining an imitation term with a penalty. The imitation reward is a weighted sum of six exponential-kernel terms, all computed **relative to the pelvis** rather than in world frame.
+
+The penalty $P_t = \max(-1,\; -\sum \lambda_p C_p)$ regularizes action bounds violations, action rate, and muscle activation energy.
+
 ## Training at Scale
 
-MuscleMimic is implemented as a JAX-based framework extending LocoMuJoCo<d-cite key="al2023locomujoco"></d-cite> with native MuJoCo Warp support for GPU-accelerated simulation. We use a DeepMimic-like<d-cite key="peng2018deepmimic"></d-cite> reward combining joint-space and site-based imitation objectives with regularization penalties, and train an actor-critic architecture with SiLU activations<d-cite key="elfwing2018sigmoid"></d-cite>, optional LayerNorm<d-cite key="ba2016layer"></d-cite>, and orthogonal initialization<d-cite key="saxe2014exact"></d-cite>. The policy outputs a diagonal Gaussian over muscle activations. For training on diverse motion datasets, we use the KINESIS dataset<d-cite key="simos2025kinesis"></d-cite> (a curated subset of AMASS<d-cite key="mahmood2019amass"></d-cite>) and progressively scale to more dynamic motions including Embody3D<d-cite key="embody3d"></d-cite>. We use the Muon optimizer<d-cite key="jordan2024muon"></d-cite> for linear layers and Adam<d-cite key="DBLP:journals/corr/KingmaB14"></d-cite> for biases and normalization, which yields significantly faster convergence than AdamW<d-cite key="liu2025muon"></d-cite>.
+MuscleMimic is implemented as a JAX-based framework extending LocoMuJoCo<d-cite key="al2023locomujoco"></d-cite> with native MuJoCo Warp support for GPU-accelerated simulation. We train across 8,192 parallel environments for 4.9 billion timesteps using the Muon optimizer<d-cite key="jordan2024muon"></d-cite> for linear layers and Adam<d-cite key="DBLP:journals/corr/KingmaB14"></d-cite> for biases and normalization, which yields significantly faster convergence than AdamW<d-cite key="DBLP:conf/iclr/LoshchilovH19"></d-cite>. For training on diverse motion datasets, we use the KINESIS dataset<d-cite key="simos2025kinesis"></d-cite> (a curated subset of AMASS<d-cite key="mahmood2019amass"></d-cite>) and progressively scale to more dynamic motions including Embody3D<d-cite key="embody3d"></d-cite>. 
+
+For large scale training, we use the Muon optimizer<d-cite key="jordan2024muon"></d-cite> for linear layers and Adam<d-cite key="DBLP:journals/corr/KingmaB14"></d-cite> for biases and normalization, which yields significantly faster and more stable convergence than AdamW<d-cite key="liu2025muon"></d-cite>.
 
 **Single-epoch updates work best.** With massively parallel GPU simulation, we can collect fresh data cheaply, so single-epoch updates ($E = 1$) achieve superior asymptotic performance while avoiding pathologies from aggressive sample reuse: expert collapse in Soft MoE routing and severe distribution shift with KL divergence spikes orders of magnitude above the stable baseline.
 
@@ -305,9 +332,10 @@ While our framework demonstrates promising alignment with experimental data, mus
 By open-sourcing this framework, we invite the community to iterate on these models: refining muscle parameters, improving joint definitions, and validating against diverse experimental datasets. We also encourage researchers to explore future applications in rehabilitation and human–robot interaction, including training on pathological gait patterns and integration with assistive devices such as exoskeletons.
 
 <div class="highlight-box" markdown="1">
+**Preprint of this work will be released soon**
 
 **Code, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
 
-**Musculoskeletal models**: ``pip install musclemimic_models``
+**Try out musculoskeletal models**: ``pip install musclemimic_models``
 
 </div>
