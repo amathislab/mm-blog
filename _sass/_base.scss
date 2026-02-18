@@ -3,6 +3,10 @@
  ******************************************************************************/
 @use "variables" as v;
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: v.$font-family-base;
   font-size: 18px;
