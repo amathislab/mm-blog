@@ -136,6 +136,7 @@ Human motor control emerges from hundreds of muscles coordinating in real time, 
 
 ## What It Looks Like
 
+In each video, the <span style="color:#7b68ee;">**blue/purple**</span> character shows the reference motion, while the other character shows the policy's inference result. The full-body locomotion tasks and the bimanual manipulation tasks are each driven by a separate policy.
 
 <div class="video-grid l-page">
   <figure>
@@ -289,8 +290,6 @@ The penalty $P_t = \max(-1,\; -\sum \lambda_p C_p)$ regularizes action bounds vi
 ## Training at Scale
 
 MuscleMimic is implemented as a JAX-based framework extending LocoMuJoCo<d-cite key="al2023locomujoco"></d-cite> with native MuJoCo Warp support for GPU-accelerated simulation. We train across 8,192 parallel environments for 4.9 billion timesteps using the Muon optimizer<d-cite key="jordan2024muon"></d-cite> for linear layers and Adam<d-cite key="DBLP:journals/corr/KingmaB14"></d-cite> for biases and normalization, which yields significantly faster convergence than AdamW<d-cite key="DBLP:conf/iclr/LoshchilovH19"></d-cite>. For training on diverse motion datasets, we use the KINESIS dataset<d-cite key="simos2025kinesis"></d-cite> (a curated subset of AMASS<d-cite key="mahmood2019amass"></d-cite>) and progressively scale to more dynamic motions including Embody3D<d-cite key="embody3d"></d-cite>. 
-
-For large scale training, we use the Muon optimizer<d-cite key="jordan2024muon"></d-cite> for linear layers and Adam<d-cite key="DBLP:journals/corr/KingmaB14"></d-cite> for biases and normalization, which yields significantly faster and more stable convergence than AdamW<d-cite key="liu2025muon"></d-cite>.
 
 **Single-epoch updates work best.** With massively parallel GPU simulation, we can collect fresh data cheaply, so single-epoch updates ($E = 1$) achieve superior asymptotic performance while avoiding pathologies from aggressive sample reuse: expert collapse in Soft MoE routing and severe distribution shift with KL divergence spikes orders of magnitude above the stable baseline.
 
