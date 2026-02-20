@@ -15,9 +15,11 @@ authors:
     affiliations:
       name: McGill University
   - name: Bianca Ziliotto
+    url: "https://people.epfl.ch/bianca.ziliotto"
     affiliations:
       name: EPFL
   - name: Merkourios Simos
+    url: "https://people.epfl.ch/merkourios.simos"
     affiliations:
       name: EPFL
   - name: Guillaume Durandau
