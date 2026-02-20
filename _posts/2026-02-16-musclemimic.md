@@ -7,7 +7,7 @@ future: true
 
 authors:
   - name: Chengkun Li*
-    url: "https://chengkunli.github.io"
+    url: "https://charlieleee.github.io"
     affiliations:
       name: EPFL
   - name: Cheryl Wang*
@@ -307,8 +307,8 @@ Both models were extensively validated for muscle symmetry and biomechanical acc
 
 <figure class="l-page">
   <div class="image-grid-2">
-    <img src="{{ '/assets/img/refinement1.svg' | relative_url }}" alt="Muscle symmetry — BFLH across Knee Flexion">
-    <img src="{{ '/assets/img/refinement2.svg' | relative_url }}" alt="Muscle symmetry — BIClong across Elbow Flexion">
+    <img src="{{ '/assets/img/refinement1.svg' | relative_url }}" alt="Muscle symmetry — BFLH across Knee Flexion" style="background: white; padding: 8px; border-radius: 6px;">
+    <img src="{{ '/assets/img/refinement2.svg' | relative_url }}" alt="Muscle symmetry — BIClong across Elbow Flexion" style="background: white; padding: 8px; border-radius: 6px;">
   </div>
   <figcaption>Validation of symmetry between left and right muscle-tendon groups of MyoFullBody.</figcaption>
 </figure>
@@ -317,12 +317,12 @@ Moment arms were further validated against experimental measurements from cadave
 
 <figure class="l-page">
   <div class="image-grid-2">
-    <img src="{{ '/assets/img/musclemimic/muscle_check/moment_arm_BRD.png' | relative_url }}" alt="BRD moment arm validation">
-    <img src="{{ '/assets/img/musclemimic/muscle_check/moment_arm_Biceps femoris.png' | relative_url }}" alt="Biceps femoris moment arm validation">
+    <img src="{{ '/assets/img/musclemimic/muscle_check/moment_arm_BRD.png' | relative_url }}" alt="BRD moment arm validation" style="background: white; padding: 8px; border-radius: 6px;">
+    <img src="{{ '/assets/img/musclemimic/muscle_check/moment_arm_Biceps femoris.png' | relative_url }}" alt="Biceps femoris moment arm validation" style="background: white; padding: 8px; border-radius: 6px;">
   </div>
   <div class="image-grid-2">
-    <img src="{{ '/assets/img/musclemimic/muscle_check/superior_lat_dorsi_abduction_validation.png' | relative_url }}" alt="Lat dorsi moment arm validation">
-    <img src="{{ '/assets/img/musclemimic/muscle_check/moment_arm_Rectus femoris.png' | relative_url }}" alt="Rectus femoris moment arm validation">
+    <img src="{{ '/assets/img/musclemimic/muscle_check/superior_lat_dorsi_abduction_validation.png' | relative_url }}" alt="Lat dorsi moment arm validation" style="background: white; padding: 8px; border-radius: 6px;">
+    <img src="{{ '/assets/img/musclemimic/muscle_check/moment_arm_Rectus femoris.png' | relative_url }}" alt="Rectus femoris moment arm validation" style="background: white; padding: 8px; border-radius: 6px;">
   </div>
   <figcaption>Validation comparing MyoFullBody muscle moment arms against experimental data from prior studies for selected shoulder, elbow, and lower-limb muscles. Despite inter-individual variability, our model's profiles remain within the reported experimental ranges.</figcaption>
 </figure>
