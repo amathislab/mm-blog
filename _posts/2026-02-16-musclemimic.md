@@ -141,7 +141,7 @@ _styles: >
 ---
 
 <div class="callout-box" markdown="1">
-**Note:** The musculoskeletal models presented here are research prototypes under active development. We are continuously refining the models based on dynamic and static validation (as discussed below), and we are excited to hear feedback from the community to further improve them — please reach out via [GitHub Issues](https://github.com/amathislab/musclemimic_models/issues) if you find any errors/issues.
+**Note:** The musculoskeletal models presented here are research prototypes under active development. We are continuously refining the models based on dynamic and static validation (as discussed below), and we are excited to hear feedback from the community to further improve them — please reach out via [GitHub Issues](https://github.com/amathislab/musclemimic_models/issues) if you find any errors/issues. In addition, if you found this work useful, please cite it as provided at the end of this page.
 </div>
 
 ## Overview
