@@ -120,7 +120,31 @@ _styles: >
     border-radius: 6px;
     height: auto;
   }
+  .callout-box {
+    background: #fffbe6;
+    border: 1px solid #ffe066;
+    border-left: 4px solid #f5a623;
+    padding: 1rem 1.25rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .callout-box p {
+    margin: 0;
+  }
+  html[data-theme="dark"] .callout-box {
+    background: rgba(245, 166, 35, 0.1);
+    border-color: rgba(245, 166, 35, 0.3);
+    border-left-color: #f5a623;
+  }
 ---
+
+<div class="callout-box" markdown="1">
+**Note:** The musculoskeletal models presented here are research prototypes under active development. We are continuously refining the models based on dynamic and static validation (as discussed below), and we are excited to hear feedback from the community to further improve them — please reach out via [GitHub Issues](https://github.com/amathislab/musclemimic_models/issues) if you find any errors/issues. In addition, if you found this work useful, please cite it as provided at the end of this page.
+</div>
+
+## Overview
 
 Human motor control emerges from hundreds of muscles coordinating in real time, yet most simulated humanoids bypass this complexity entirely, relying on torque-driven joints that ignore the underlying neuromotor dynamics<d-cite key="Park2004,Aftab2016,peng2018deepmimic,Won2020"></d-cite>. While musculoskeletal (MSK) models built from cadaver and MRI data have brought us closer to biological realism<d-cite key="Christophy2011,Dorn2015,Rajagoapal2016,Seth2018,Adriaenssens2022"></d-cite>, they've been held back by computational cost (training takes days to weeks on CPUs<d-cite key="he2024dynsyn,simos2025kinesis,wang2025-ieee"></d-cite>) and limited to static validation or single-task evaluations. Complex full-body models capable of diverse, dynamic movement have remained largely unexplored and only partially validated.
 
