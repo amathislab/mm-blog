@@ -156,7 +156,7 @@ Human motor control emerges from hundreds of muscles coordinating in real time, 
 
 **Code, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
 
-**Try out musculoskeletal models**: ``pip install musclemimic_models``
+**Try out musculoskeletal models**: ``pip install musclemimic-models``
 
 </div>
 
@@ -364,6 +364,6 @@ By open-sourcing this framework, we invite the community to iterate on these mod
 
 **Code, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
 
-**Try out musculoskeletal models**: ``pip install musclemimic_models``
+**Try out musculoskeletal models**: ``pip install musclemimic-models``
 
 </div>
