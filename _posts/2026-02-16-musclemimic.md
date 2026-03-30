@@ -9,27 +9,34 @@ authors:
   - name: Chengkun Li*
     url: "https://charlieleee.github.io"
     affiliations:
-      name: EPFL
+      - name: EPFL
   - name: Cheryl Wang*
     url: "https://cherylwang20.github.io/"
     affiliations:
-      name: McGill University
+      - name: McGill University
+      - name: CRIR-JRH Research Center
+      - name: NVIDIA
   - name: Bianca Ziliotto
     url: "https://people.epfl.ch/bianca.ziliotto"
     affiliations:
-      name: EPFL
+      - name: EPFL
   - name: Merkourios Simos
     url: "https://people.epfl.ch/merkourios.simos"
     affiliations:
-      name: EPFL
+      - name: EPFL
+  - name: Jozsef Kovecses
+    affiliations:
+      - name: McGill University
   - name: Guillaume Durandau
     url: "https://www.mcgill.ca/mecheng/guillaume-durandau"
     affiliations:
-      name: McGill University
+      - name: McGill University
+      - name: CRIR-JRH Research Center
   - name: Alexander Mathis
     url: "https://amathislab.github.io"
     affiliations:
-      name: EPFL
+      - name: EPFL
+    corresponding: "alexander.mathis@epfl.ch"
 
 permalink: /
 bibliography: 2026-02-16-musclemimic.bib
@@ -40,8 +47,10 @@ acknowledgements: >-
 citation_bibtex: |
   @article{musclemimic2026,
     title   = {Towards Embodied AI with MuscleMimic: Unlocking full-body musculoskeletal motor learning at scale},
-    author  = {Chengkun Li and Cheryl Wang and Bianca Ziliotto and Merkourios Simos and Guillaume Durandau and Alexander Mathis},
+    author  = {Chengkun Li and Cheryl Wang and Bianca Ziliotto and Merkourios Simos and Jozsef Kovecses and Guillaume Durandau and Alexander Mathis},
     year    = {2026},
+    eprint  = {2603.25544},
+    archivePrefix = {arXiv},
   }
 
 _styles: >
@@ -152,7 +161,7 @@ Human motor control emerges from hundreds of muscles coordinating in real time, 
 
 <div class="highlight-box" markdown="1">
 
-**Preprint of this work will be released soon**
+**Preprint**: [arXiv:2603.25544](https://arxiv.org/abs/2603.25544)
 
 **Code, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
 
@@ -360,7 +369,7 @@ While our framework demonstrates promising alignment with experimental data, mus
 By open-sourcing this framework, we invite the community to iterate on these models: refining muscle parameters, improving joint definitions, and validating against diverse experimental datasets. We also encourage researchers to explore future applications in rehabilitation and human–robot interaction, including training on pathological gait patterns and integration with assistive devices such as exoskeletons.
 
 <div class="highlight-box" markdown="1">
-**Preprint of this work will be released soon**
+**Preprint**: [arXiv:2603.25544](https://arxiv.org/abs/2603.25544)
 
 **Code, checkpoints, and retargeted dataset**: [github.com/amathislab/musclemimic](https://github.com/amathislab/musclemimic)
 
