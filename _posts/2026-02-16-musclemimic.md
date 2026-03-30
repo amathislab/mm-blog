@@ -45,12 +45,11 @@ acknowledgements: >-
   We thank members of the Mathis Group for feedback on the project, and Vittorio Caggiano, James Heald, and Balint K. Hodossy for helpful discussions.
 
 citation_bibtex: |
-  @article{musclemimic2026,
-    title   = {Towards Embodied AI with MuscleMimic: Unlocking full-body musculoskeletal motor learning at scale},
-    author  = {Chengkun Li and Cheryl Wang and Bianca Ziliotto and Merkourios Simos and Jozsef Kovecses and Guillaume Durandau and Alexander Mathis},
-    year    = {2026},
-    eprint  = {2603.25544},
-    archivePrefix = {arXiv},
+  @article{li2026towards,
+    title={Towards Embodied AI with MuscleMimic: Unlocking full-body musculoskeletal motor learning at scale},
+    author={Li, Chengkun and Wang, Cheryl and Ziliotto, Bianca and Simos, Merkourios and Kovecses, Jozsef and Durandau, Guillaume and Mathis, Alexander},
+    journal={arXiv preprint arXiv:2603.25544},
+    year={2026}
   }
 
 _styles: >
