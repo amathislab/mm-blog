@@ -41,6 +41,11 @@ authors:
 permalink: /
 bibliography: 2026-02-16-musclemimic.bib
 
+paper_url: "https://arxiv.org/abs/2603.25544"
+paper_text: "arXiv:2603.25544"
+code_url: "https://github.com/amathislab/musclemimic"
+code_text: "GitHub"
+
 acknowledgements: >-
   We thank members of the Mathis Group for feedback on the project, and Vittorio Caggiano, James Heald, and Balint K. Hodossy for helpful discussions.
 

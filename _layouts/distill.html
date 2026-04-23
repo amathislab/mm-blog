@@ -93,6 +93,16 @@
     {% include scripts/jquery.html %}
     <script src="{{ site.third_party_libraries.bootstrap.js }}"></script>
 
+    <!-- Byline links (PDF, Code) — read by overrides.js -->
+    <script>
+      window.distillBylineLinks = {
+        paperURL: "{{ page.paper_url }}",
+        paperText: "{{ page.paper_text }}",
+        codeURL: "{{ page.code_url }}",
+        codeText: "{{ page.code_text }}"
+      };
+    </script>
+
     <!-- Distill overrides (theme-aware footnote/citation styling) -->
     <script src="{{ '/assets/js/distillpub/overrides.js' | relative_url }}"></script>
 
