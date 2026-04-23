@@ -28,9 +28,14 @@ $(window).on("load", function () {
         '<h3>Code</h3><p><a href="' + links.codeURL + '" target="_blank" rel="noopener">' + (links.codeText || "Code") + '</a></p>'
       );
     }
+    if (links.demoURL) {
+      sections.push(
+        '<h3>Playground</h3><p><a href="' + links.demoURL + '" target="_blank" rel="noopener">' + (links.demoText || "Demo") + '</a></p>'
+      );
+    }
     if (citationEl) {
       sections.push(
-        '<h3>Cite</h3><p><a class="cite-link" href="#citation">Cite this work</a></p>'
+        '<h3>Cite</h3><p><a class="cite-link" href="#citation">bibTeX</a></p>'
       );
     }
 

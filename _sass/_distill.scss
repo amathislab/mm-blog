@@ -31,6 +31,10 @@ d-byline {
       color: var(--global-hover-color) !important;
     }
   }
+  
+  p + h3 {
+    margin-top: 0.75em !important;
+  }
 }
 
 d-article {
